@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70c9e3b7-ce47-40bb-94e6-2c063e2ad6c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/mimeTypes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/HarEntryTable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.scss" afterPath="$PROJECT_DIR$/src/app.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/HarViewer.js" afterPath="$PROJECT_DIR$/src/components/HarViewer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
     </list>
     <ignored path="har-view.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +64,20 @@
       <file leaf-file-name="HarViewer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/HarViewer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+            <state relative-caret-position="289">
+              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+              <folding>
+                <element signature="e#45#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HarEntryTable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/HarEntryTable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="22" />
               <folding>
                 <element signature="e#45#71#0" expanded="true" />
               </folding>
@@ -132,16 +141,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -165,6 +164,7 @@
         <option value="$PROJECT_DIR$/src/app.scss" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/core/mimeTypes.js" />
+        <option value="$PROJECT_DIR$/src/components/HarEntryTable.js" />
         <option value="$PROJECT_DIR$/src/components/HarViewer.js" />
       </list>
     </option>
@@ -579,10 +579,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HarEntryTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <element signature="e#45#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HarViewer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+        <state relative-caret-position="289">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
           <folding>
             <element signature="e#45#71#0" expanded="true" />
           </folding>
