@@ -7,5 +7,6 @@
     <orderEntry type="library" name="react-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="react-widgets-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="react-autosuggest-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="har-view node_modules" level="project" />
   </component>
 </module>
