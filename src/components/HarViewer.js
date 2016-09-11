@@ -6,9 +6,10 @@ import ReactDOM from 'react-dom';
 
 import _ from 'lodash';
 import {Grid, Row, Col, PageHeader, Button, ButtonGroup,Alert, InputGroup} from 'react-bootstrap';
-import mimeTypes from '../core/mimeTypes';
 import HarEntryTable from './HarEntryTable';
 import harParser from '../core/har-parser';
+import FilterBar from './FilterBar';
+import SampleSelector from './SampleSelector';
 
 
 export default class HarViewer extends  React.Component {
@@ -21,7 +22,9 @@ export default class HarViewer extends  React.Component {
         return {
             activeHar: null,
             sortKey: null,
-            sortDirection: null
+            sortDirection: null,
+            filterType: 'all',
+            filterText: null
         }
     }
     render(){
@@ -53,9 +56,19 @@ export default class HarViewer extends  React.Component {
     _renderViewer(har){
         var pages = harParser.parse(har),
             currentPage = pages[0];
-        var entries = this._sortEntriesByKey(this.state.sortKey, this.state.sortDirection, currentPage.entries);
+        var filter = {
+            type: this.state.filterType,
+            text: this.state.filterText
+        },
+            filteredEntries = this._filterEntries(filter, currentPage.entries),
+            entries = this._sortEntriesByKey(this.state.sortKey, this.state.sortDirection, filteredEntries);
         return(
             <Grid fluid>
+                <FilterBar
+                    onChanged={this._onFilterChanged.bind(this)}
+                    onFilterTextChanged={this._onFilterTextChanged.bind(this)}
+                />
+
                 <Row>
                     <Col sm={12}>
                         <HarEntryTable
@@ -70,14 +83,6 @@ export default class HarViewer extends  React.Component {
     }
 
     _renderHeader(){
-        var buttons =  _.map(_.keys(mimeTypes.types),(x) => {
-            return this._createButton(x, mimeTypes.types[x].label);
-        });
-
-        var options = _.map(window.samples, (s) => {
-            return (<option key={s.id} value={s.id}>{s.label}</option>)
-        });
-
         return(
             <Grid>
                 <Row>
@@ -86,13 +91,9 @@ export default class HarViewer extends  React.Component {
                     </Col>
 
                     <Col sm={3} smOffset={9}>
-                        <div>
-                            <label className="control-label"></label>
-                            <select ref="selector" className="form-control" onChange={this._sampleChanged.bind(this)}>
-                                <option value="">---</option>
-                                {options}
-                            </select>
-                        </div>
+                        <SampleSelector
+                            onSampleChanged={this._sampleChanged.bind(this)}
+                        />
                     </Col>
 
                 </Row>
@@ -102,35 +103,12 @@ export default class HarViewer extends  React.Component {
                         <p>Pie Chart</p>
                     </Col>
                 </Row>
-
-                <Row>
-                    <Col sm={8}>
-                        <ButtonGroup bsSize="small">
-                            {this._createButton('all', 'All')}
-                            {buttons}
-                        </ButtonGroup>
-                    </Col>
-
-                    <Col sm={4}>
-                        <input
-                            type="search"
-                            placeholder="Search Url"
-                            bsSize="small"
-                            onChange={this._filterTextChanged.bind(this)}
-                            ref="filterText" />
-                    </Col>
-                </Row>
-
             </Grid>
         );
 
     }
 
-    _sampleChanged(){
-        var selection = this.refs.selector.value;// ReactDOM.findDOMNode(this.refs.selector).value;
-        var har = selection
-            ?_.find(window.samples, s =>s.id === selection).har
-            :null;
+    _sampleChanged(har){
         if(har){
             this.setState({activeHar: har});
         }else {
@@ -138,31 +116,25 @@ export default class HarViewer extends  React.Component {
         }
     }
 
-
     //--------------------------------
     //          Filtering
     //--------------------------------
-    _createButton(type, label){
-        var hadler = this._filterRequested.bind(this, type);
-        return(
-            <Button
-                key={type}
-                bsStyle="primary"
-                active={this.state.type === type}
-                onClick={hadler}
-            >{label}
-            </Button>
-        );
+    _onFilterChanged(type){
+        this.setState({filterType: type})
     }
 
-    _filterRequested(type, event){
-
+    _onFilterTextChanged(text){
+        this.setState({filterText: text})
     }
 
-    _filterTextChanged(){
+    _filterEntries(filter, entries){
+        return _.filter(entries, (x) => {
+            var matchesType = filter.type === 'all' || filter.type === x.type,
+                matchesText = _.includes(x.request.url, filter.text || '');
 
+            return matchesType && matchesText;
+        });
     }
-
     //--------------------------------
     //          Sorting
     //--------------------------------

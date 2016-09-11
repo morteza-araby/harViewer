@@ -73,4 +73,6 @@ function identify(mimeType) {
     var fileType = _.find(_.keys(types), function (type) {
         return _.includes(types[type].mime, mimeType);
     });
+
+    return fileType || 'other';
 }
