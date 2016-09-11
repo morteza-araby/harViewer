@@ -8,6 +8,8 @@ require('fixed-data-table/dist/fixed-data-table.css');
 const {Table, Column, Cell} = require('fixed-data-table');
 const GutterWidth = 30;
 
+var PropTypes = React.PropTypes;
+
 export default class HarEntryTable extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -20,7 +22,12 @@ export default class HarEntryTable extends React.Component {
                 time: 200
             },
             tableWidth: 1000,
-            tableHeight: 500
+            tableHeight: 500,
+            sortDirection: {
+                url: null,
+                size: null,
+                time: null
+            }
         }
     }
 
@@ -40,6 +47,7 @@ export default class HarEntryTable extends React.Component {
                 <Column
                     dataKey="url"
                     width={this.state.columnWidths.url}
+                    headerRenderer={this._renderHeader.bind(this)}
                     isResizable={true}
                     cellDataGetter={this._readKey.bind(this)}
                     flexGrow={null}
@@ -47,12 +55,14 @@ export default class HarEntryTable extends React.Component {
                 <Column
                     dataKey="size"
                     width={this.state.columnWidths.size}
+                    headerRenderer={this._renderHeader.bind(this)}
                     cellDataGetter={this._readKey.bind(this)}
                     isResizable={true}
                     label="Size"/>
                 <Column
                     dataKey="time"
                     width={this.state.columnWidths.time}
+                    headerRenderer={this._renderHeader.bind(this)}
                     cellDataGetter={this._readKey.bind(this)}
                     isResizable={true}
                     minWidth={200}
@@ -98,8 +108,54 @@ export default class HarEntryTable extends React.Component {
             tableHeight: document.body.clientHeight - parent.offsetTop - GutterWidth * 0.5
         });
     }
+
+    //--------------------------------
+    //          Table Sorting
+    //--------------------------------
+    _renderHeader(label, dataKey){
+        var dir = this.state.sortDirection[dataKey],
+            classMap = {
+                asc: 'glyphicon glyphicon-sort-by-attributes',
+                desc: 'glyphicon glyphicon-sort-by-attributes-alt'
+            }
+        var sortClass = dir ? classMap[dir] : '';
+        return(
+            <div className="text-primary sortable"
+            onClick={this._columClicked.bind(this, dataKey)}>
+                <strong>{label}</strong>
+                &nbsp;
+                <i className={sortClass}></i>
+            </div>
+        )
+    }
+
+    _columClicked(dataKey){
+        var sortDirections = this.state.sortDirection,
+            dir = sortDirections[dataKey];
+
+        if(dir === null) {dir = 'asc';}
+        else if(dir === 'asc') {dir = 'desc';}
+        else if(dir === 'desc') {dir = null;}
+
+        // Allow sort only on one column at the time
+        //Reset all sorts
+        _.each(_.keys(sortDirections), (x) => {
+            sortDirections[x] = null;
+        });
+        sortDirections[dataKey] = dir;
+
+        if(this.props.onColumnSort){
+            this.props.onColumnSort(dataKey, dir);
+        }
+    }
 }
 
 HarEntryTable.defaultProps={
-    entries:[]
+    entries:[],
+    onColumnSort: null
+}
+
+HarEntryTable.propTypes = {
+    entries: PropTypes.array,
+    onColumnSort: PropTypes.func
 }

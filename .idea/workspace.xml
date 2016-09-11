@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70c9e3b7-ce47-40bb-94e6-2c063e2ad6c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/Entry.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/Page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/har-parser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/sample-hars/facebook.github.io.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/sample-hars/stackoverflow.com.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/sample-hars/www.nytimes.com.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/_har-entry-table.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/HarEntryTable.js" afterPath="$PROJECT_DIR$/src/components/HarEntryTable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/HarViewer.js" afterPath="$PROJECT_DIR$/src/components/HarViewer.js" />
@@ -36,8 +30,8 @@
       <file leaf-file-name="HarViewer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/HarViewer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="313">
+              <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
               <folding>
                 <element signature="e#45#71#0" expanded="true" />
               </folding>
@@ -92,11 +86,21 @@
       <file leaf-file-name="HarEntryTable.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/HarEntryTable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+            <state relative-caret-position="308">
+              <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
               <folding>
                 <element signature="e#45#71#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_har-entry-table.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/style/_har-entry-table.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,24 +129,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,11 +162,12 @@
         <option value="$PROJECT_DIR$/src/app.scss" />
         <option value="$PROJECT_DIR$/src/core/mimeTypes.js" />
         <option value="$PROJECT_DIR$/src/samples.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/store/sample-hars/facebook.github.io.json" />
         <option value="$PROJECT_DIR$/src/core/har-parser.js" />
         <option value="$PROJECT_DIR$/src/core/Page.js" />
         <option value="$PROJECT_DIR$/src/core/Entry.js" />
+        <option value="$PROJECT_DIR$/style/_har-entry-table.scss" />
+        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/HarViewer.js" />
         <option value="$PROJECT_DIR$/src/components/HarEntryTable.js" />
       </list>
@@ -280,43 +273,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app.scss" />
-              <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="har-view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="har-view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="har-view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="har-view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,16 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/sample-hars/stackoverflow.com.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-357">
@@ -650,10 +597,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/style/_har-entry-table.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HarViewer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="313">
+          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
           <folding>
             <element signature="e#45#71#0" expanded="true" />
           </folding>
@@ -662,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HarEntryTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        <state relative-caret-position="308">
+          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding>
             <element signature="e#45#71#0" expanded="true" />
           </folding>
