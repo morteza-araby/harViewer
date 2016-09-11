@@ -5,44 +5,75 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import _ from 'lodash';
-import {Grid, Row, Col, PageHeader, Button, ButtonGroup, Input} from 'react-bootstrap';
+import {Grid, Row, Col, PageHeader, Button, ButtonGroup,Alert, InputGroup} from 'react-bootstrap';
 import mimeTypes from '../core/mimeTypes';
 import HarEntryTable from './HarEntryTable';
-
+import harParser from '../core/har-parser';
 
 
 export default class HarViewer extends  React.Component {
     constructor(props, context){
         super(props, context);
-        this.state = {
+        this.state = this._initialState();
+    }
+
+    _initialState(){
+        return {
+            activeHar: null,
             entries: []
         }
     }
-
     render(){
-
-        var buttons =  _.map(_.keys(mimeTypes.types),(x) => {
-            return this._createButton(x, mimeTypes.types[x].label);
-        });
-
+        var content = this.state.activeHar
+            ? this._renderViewer(this.state.activeHar)
+            : this._renderEmptyViewer();
        return(
-               <Grid>
-               {this._renderHeader()}
-               <Row>
-                   <Col sm={12}>
-                       <HarEntryTable
-                           entries={this.state.entries}
-                       >
-                       </HarEntryTable>
-                   </Col>
-               </Row>
-               </Grid>
-       )
+               <div>
+                   {this._renderHeader()}
+                   {content}
+               </div>
+       );
+    }
+
+    _renderEmptyViewer(){
+        return(
+            <Grid fluid>
+                <Row>
+                    <Col sm={12}>
+                        <p></p>
+                        <Alert bsStyle="warning">
+                            <strong>No HAR loaded</strong>
+                        </Alert>
+                    </Col>
+                </Row>
+            </Grid>
+        );
+    }
+    _renderViewer(har){
+        var pages = harParser.parse(har),
+            currentPage = pages[0];
+        var entries = currentPage.entries;
+        return(
+            <Grid fluid>
+                <Row>
+                    <Col sm={12}>
+                        <HarEntryTable
+                            entries={entries}
+                        >
+                        </HarEntryTable>
+                    </Col>
+                </Row>
+            </Grid>
+        );
     }
 
     _renderHeader(){
         var buttons =  _.map(_.keys(mimeTypes.types),(x) => {
             return this._createButton(x, mimeTypes.types[x].label);
+        });
+
+        var options = _.map(window.samples, (s) => {
+            return (<option key={s.id} value={s.id}>{s.label}</option>)
         });
 
         return(
@@ -55,8 +86,9 @@ export default class HarViewer extends  React.Component {
                     <Col sm={3} smOffset={9}>
                         <div>
                             <label className="control-label"></label>
-                            <select className="form-control" onChange={this._sampleChanged.bind(this)}>
+                            <select ref="selector" className="form-control" onChange={this._sampleChanged.bind(this)}>
                                 <option value="">---</option>
+                                {options}
                             </select>
                         </div>
                     </Col>
@@ -93,6 +125,15 @@ export default class HarViewer extends  React.Component {
     }
 
     _sampleChanged(){
+        var selection = this.refs.selector.value;// ReactDOM.findDOMNode(this.refs.selector).value;
+        var har = selection
+            ?_.find(window.samples, s =>s.id === selection).har
+            :null;
+        if(har){
+            this.setState({activeHar: har});
+        }else {
+            this.setState(this._initialState());
+        }
     }
 
 

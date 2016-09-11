@@ -41,16 +41,19 @@ export default class HarEntryTable extends React.Component {
                     dataKey="url"
                     width={this.state.columnWidths.url}
                     isResizable={true}
+                    cellDataGetter={this._readKey.bind(this)}
                     flexGrow={null}
                     label="Url"/>
                 <Column
                     dataKey="size"
                     width={this.state.columnWidths.size}
+                    cellDataGetter={this._readKey.bind(this)}
                     isResizable={true}
                     label="Size"/>
                 <Column
                     dataKey="time"
                     width={this.state.columnWidths.time}
+                    cellDataGetter={this._readKey.bind(this)}
                     isResizable={true}
                     minWidth={200}
                     label="Timeline"/>
@@ -58,6 +61,14 @@ export default class HarEntryTable extends React.Component {
         )
     }
 
+    _readKey(key, entry){
+        var keyMap = {
+            url: 'request.url',
+            time: 'time.start'
+        };
+        key = keyMap[key] || key;
+        return _.get(entry, key);
+    }
     _onColumnResized(newColumnWidth, dataKey){
         var columnWidths = this.state.columnWidths;
         columnWidths[dataKey] = newColumnWidth;
