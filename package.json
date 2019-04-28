@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.14.0",
-    "jquery": "^2.2.1",
+    "jquery": "^3.4.0",
     "jsdom": "^8.1.0",
     "json-loader": "^0.5.4",
     "mocha": "^2.4.5",
